@@ -1,4 +1,4 @@
-package com.yk.vote.test;
+package com.yk.vote;
 
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

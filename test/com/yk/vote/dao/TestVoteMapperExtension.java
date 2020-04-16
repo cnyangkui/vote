@@ -1,10 +1,10 @@
-package com.yk.vote.test.dao;
+package com.yk.vote.dao;
 
 import com.yk.vote.mapper.extension.VoteMapperExtension;
 import com.yk.vote.po.UserVote;
 import com.yk.vote.po.extension.VoteInfoExtension;
 import com.yk.vote.po.extension.VoteOptionExtension;
-import com.yk.vote.test.BaseTest;
+import com.yk.vote.BaseTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

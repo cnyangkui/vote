@@ -1,8 +1,7 @@
-package com.yk.vote.test.service;
+package com.yk.vote.service;
 
+import com.yk.vote.BaseTest;
 import com.yk.vote.po.User;
-import com.yk.vote.service.UserService;
-import com.yk.vote.test.BaseTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

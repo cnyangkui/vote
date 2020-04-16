@@ -157,6 +157,7 @@ public class GeneratorFromXML {
         MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
         myBatisGenerator.generate(null);
     }
+
 }
 ```
 
