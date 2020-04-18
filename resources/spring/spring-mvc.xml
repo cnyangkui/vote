@@ -33,5 +33,12 @@
     <!-- 当上面要访问的静态资源不存在与上面的配置中时，则根据此配置来访问-->
     <mvc:default-servlet-handler/>
 
+    <!--拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.yk.vote.interceptor.LoginAuthenticationHandlerInterceptor  "></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 </beans>
