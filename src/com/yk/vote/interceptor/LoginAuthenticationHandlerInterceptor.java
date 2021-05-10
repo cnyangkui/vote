@@ -16,6 +16,7 @@ public class LoginAuthenticationHandlerInterceptor implements HandlerInterceptor
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         System.out.println("**************登录认证拦截***************");
         String url = request.getRequestURI();
+        System.out.println(url);
         if(url.indexOf("userLogin") > 0) {
             return true;
         }
@@ -23,6 +24,15 @@ public class LoginAuthenticationHandlerInterceptor implements HandlerInterceptor
             return true;
         }
         if(request.getSession().getAttribute("currentUser") != null) {
+            return true;
+        }
+        if(url.indexOf("/images/") > 0) {
+            return true;
+        }
+        if(url.indexOf("/js/") > 0) {
+            return true;
+        }
+        if(url.indexOf("/css/") > 0) {
             return true;
         }
         response.sendRedirect("login.jsp");

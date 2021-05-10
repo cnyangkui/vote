@@ -307,13 +307,47 @@ public class GeneratorFromXML {
         http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <!-- bean definitions here -->
+    <!--============================非注解方式的处理器映射器和处理器适配器============================-->
+
+    <!--配置Handler-->
+    <!--HelloWorldController实现了Controller接口-->
+    <bean id="helloWorldController" name="/helloworld" class="com.yk.vote.controller.HelloWorldController"/>
+    <!--HelloWorldController2实现了HttpRequestHandler接口-->
+    <bean id="helloWorldController2" name="/helloworld2" class="com.yk.vote.controller.HelloWorldController2"/>
+
+    <!--处理器映射器1 非注解-->
+    <!--<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>-->
+
+    <!--处理器映射器2 简单url映射 非注解-->
+    <!--<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="/hello">helloWorldController</prop>
+            </props>
+        </property>
+    </bean>-->
+
+    <!--处理器适配器1 SimpleControllerHandlerAdapter，要求编写的Handler实现Controller接口 非注解-->
+    <!--<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>-->
+
+    <!--处理器适配器2 HttpRequestHandlerAdapter，要求编写的Handler实现HttpRequestHandler接口，该方式可以设置响应的数据格式-->
+    <!--<bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter"/>-->
+
+    <!--============================注解的处理器映射器和处理器适配器============================-->
+
+    <!--注解的处理器映射器-->
+    <!--<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>-->
+
+    <!--注解的处理器适配器-->
+    <!--<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>-->
+
+    <!--使用mvc:annotation-driven不用再配置注解的处理器映射器和处理器适配器，实际开发时推荐使用该方式-->
+    <mvc:annotation-driven/>
+
+    <!--======================================================================================-->
 
     <!--组件扫描-->
     <context:component-scan base-package="com.yk.vote.controller"/>
-
-    <!--使用mvc:annotation-driven不用再配置注解映射器和注解适配器-->
-    <mvc:annotation-driven/>
 
     <!--视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -328,6 +362,13 @@ public class GeneratorFromXML {
     <!-- 当上面要访问的静态资源不存在与上面的配置中时，则根据此配置来访问-->
     <mvc:default-servlet-handler/>
 
+    <!--拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.yk.vote.interceptor.LoginAuthenticationHandlerInterceptor  "></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 </beans>
 ```

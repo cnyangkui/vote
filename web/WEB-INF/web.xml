@@ -13,10 +13,12 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
+    <!--springmvc前端控制器-->
     <servlet>
         <servlet-name>springmvc</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
+            <!--contextConfigLocation 配置springmvc加载的配置文件（配置处理器映射器、适配器等）-->
             <param-name>contextConfigLocation</param-name>
             <param-value>classpath:spring/spring-mvc.xml</param-value>
         </init-param>
@@ -25,6 +27,11 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>springmvc</servlet-name>
+        <!--
+        1、*.action，以.action结尾由DispatcherServlet进行解析
+        2、/,访问的地址由DispatcherServlet进行解析，对于静态文件不让DispatcherServlet进行解析，可以实现RESTful风格的url
+        3、/*，配置不对
+        -->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
