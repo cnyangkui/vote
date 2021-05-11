@@ -4,7 +4,7 @@ import com.yk.vote.po.User;
 import com.yk.vote.po.UserVote;
 import com.yk.vote.po.VoteInfo;
 import com.yk.vote.po.VoteOption;
-import com.yk.vote.po.extension.VoteInfoExtension;
+import com.yk.vote.po.custom.VoteInfoCustom;
 import com.yk.vote.service.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,14 +38,14 @@ public class VoteController {
 
     @RequestMapping(value = "/queryAllVotes")
     public String queryAllVotes(Model model) throws Exception {
-        List<VoteInfoExtension> voteList = voteService.queryAllVotes();
+        List<VoteInfoCustom> voteList = voteService.queryAllVotes();
         model.addAttribute("voteList", voteList);
         return "votelist";
     }
 
     @RequestMapping(value = "/queryVote")
     public String queryVote(Model model, HttpSession session, @RequestParam(value = "vid") String vid) throws Exception {
-        VoteInfoExtension voteInfoExtension = voteService.queryVoteByVid(vid);
+        VoteInfoCustom voteInfoExtension = voteService.queryVoteByVid(vid);
         model.addAttribute("voteInfo", voteInfoExtension);
 //        User user = (User) session.getAttribute("currentUser");
 //        if(user != null) {
@@ -63,7 +63,7 @@ public class VoteController {
 
     @RequestMapping(value = "/queryVoteResult")
     public String queryVoteResult(Model model, HttpSession session, @RequestParam(value = "vid") String vid) throws Exception {
-        VoteInfoExtension voteInfoExtension = voteService.queryVoteByVid(vid);
+        VoteInfoCustom voteInfoExtension = voteService.queryVoteByVid(vid);
         model.addAttribute("voteInfo", voteInfoExtension);
         User user = (User) session.getAttribute("currentUser");
         if(user != null) {

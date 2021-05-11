@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yk.vote.mapper.extension.VoteMapperExtension">
-    <resultMap id="voteExtensionResultMap" type="VoteInfoExtension">
+<mapper namespace="com.yk.vote.mapper.custom.VoteMapperCustom">
+    <resultMap id="voteCustomResultMap" type="VoteInfoCustom">
         <id column="vid" property="vid"/>
         <result column="voteName" property="voteName"/>
         <result column="type" property="type"/>
-        <collection  property="optionList" ofType="VoteOptionExtension">
+        <collection  property="optionList" ofType="VoteOptionCustom">
             <id column="oid" property="oid"/>
             <result column="vid" property="vid"/>
             <result column="optionName" property="optionName"/>
@@ -17,12 +17,12 @@
         </collection>
     </resultMap>
     <!--查询所有vote,多表查询-->
-    <select id="queryAllVotes" resultMap="voteExtensionResultMap">
+    <select id="queryAllVotes" resultMap="voteCustomResultMap">
         select * from voteInfo
         left join voteOption on voteInfo.vid=voteOption.vid
         left join userVote on userVote.oid=voteOption.oid
     </select>
-    <select id="queryVoteByVid" resultMap="voteExtensionResultMap">
+    <select id="queryVoteByVid" resultMap="voteCustomResultMap">
         select * from voteInfo
         left join voteOption on voteInfo.vid=voteOption.vid
         left join userVote on uservote.oid=voteOption.oid

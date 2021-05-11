@@ -1,11 +1,11 @@
-package com.yk.vote.po.extension;
+package com.yk.vote.po.custom;
 
 import java.util.List;
 
 import com.yk.vote.po.UserVote;
 import com.yk.vote.po.VoteOption;
 
-public class VoteOptionExtension extends VoteOption {
+public class VoteOptionCustom extends VoteOption {
 
     private List<UserVote> userVoteList;
 

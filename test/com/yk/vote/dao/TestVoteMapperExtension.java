@@ -1,9 +1,9 @@
 package com.yk.vote.dao;
 
-import com.yk.vote.mapper.extension.VoteMapperExtension;
+import com.yk.vote.mapper.custom.VoteMapperCustom;
 import com.yk.vote.po.UserVote;
-import com.yk.vote.po.extension.VoteInfoExtension;
-import com.yk.vote.po.extension.VoteOptionExtension;
+import com.yk.vote.po.custom.VoteInfoCustom;
+import com.yk.vote.po.custom.VoteOptionCustom;
 import com.yk.vote.BaseTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +13,15 @@ import java.util.List;
 public class TestVoteMapperExtension extends BaseTest {
 
     @Autowired
-    private VoteMapperExtension voteMapperExtension;
+    private VoteMapperCustom voteMapperExtension;
 
     @Test
     public void testSelectAllVotes() {
-        List<VoteInfoExtension> list = voteMapperExtension.queryAllVotes();
-        for(VoteInfoExtension voteExtension: list) {
+        List<VoteInfoCustom> list = voteMapperExtension.queryAllVotes();
+        for(VoteInfoCustom voteExtension: list) {
             System.out.println(voteExtension.getVoteName());
-            List<VoteOptionExtension> optionList = voteExtension.getOptionList();
-            for(VoteOptionExtension voteOption: optionList) {
+            List<VoteOptionCustom> optionList = voteExtension.getOptionList();
+            for(VoteOptionCustom voteOption: optionList) {
                 System.out.println(voteOption.getOptionName());
                 List<UserVote> userVoteList = voteOption.getUserVoteList();
                 System.out.println(userVoteList.size());

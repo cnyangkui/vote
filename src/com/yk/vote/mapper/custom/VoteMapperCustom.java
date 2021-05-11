@@ -1,31 +1,31 @@
-package com.yk.vote.mapper.extension;
+package com.yk.vote.mapper.custom;
 
-import com.yk.vote.po.extension.VoteInfoExtension;
+import com.yk.vote.po.custom.VoteInfoCustom;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface VoteMapperExtension {
+public interface VoteMapperCustom {
 
     /**
      * 查询所有投票信息
      * @return
      */
-    public List<VoteInfoExtension> queryAllVotes();
+    List<VoteInfoCustom> queryAllVotes();
 
     /**
      * 根据vid查询投票信息
      * @return
      * @param vid
      */
-    public VoteInfoExtension queryVoteByVid(String vid);
+    VoteInfoCustom queryVoteByVid(String vid);
 
     /**
      * 根据用户名查找参与过的投票
      * @param userName
      * @return
      */
-    public List<String> queryVoteByUserName(String userName);
+    List<String> queryVoteByUserName(String userName);
 
     /**
      * 根据用户名和vid查找投票项
@@ -33,6 +33,6 @@ public interface VoteMapperExtension {
      * @param vid
      * @return
      */
-    public List<String> queryVoteByUserNameAndVid(@Param("userName") String userName, @Param("vid") String vid);
+    List<String> queryVoteByUserNameAndVid(@Param("userName") String userName, @Param("vid") String vid);
 
 }

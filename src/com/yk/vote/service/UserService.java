@@ -9,20 +9,20 @@ public interface UserService {
      * @param user
      * @return
      */
-    public int saveUser(User user) throws Exception;
+    int saveUser(User user) throws Exception;
 
     /**
      * 查询用户
      * @param user
      * @return
      */
-    public User queryUser(User user) throws Exception;
+    User queryUser(User user) throws Exception;
 
     /**
      * 根据用户名查找用户
      * @param username
      * @return
      */
-    public User queryUserByUsername(String username) throws Exception;
+    User queryUserByUsername(String username) throws Exception;
 
 }

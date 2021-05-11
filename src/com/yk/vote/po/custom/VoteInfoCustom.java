@@ -1,4 +1,4 @@
-package com.yk.vote.po.extension;
+package com.yk.vote.po.custom;
 
 import java.util.HashSet;
 import java.util.List;
@@ -7,10 +7,10 @@ import java.util.Set;
 import com.yk.vote.po.UserVote;
 import com.yk.vote.po.VoteInfo;
 
-public class VoteInfoExtension extends VoteInfo {
+public class VoteInfoCustom extends VoteInfo {
 
     // 投票选项
-    private List<VoteOptionExtension> optionList;
+    private List<VoteOptionCustom> optionList;
 
     // 投票选项数量
     private Integer optionNumber = 0;
@@ -24,11 +24,11 @@ public class VoteInfoExtension extends VoteInfo {
     // 参与这项投票的用户
     private Set<String> votedUser = new HashSet<>();
 
-    public List<VoteOptionExtension> getOptionList() {
+    public List<VoteOptionCustom> getOptionList() {
         return optionList;
     }
 
-    public void setOptionList(List<VoteOptionExtension> optionList) {
+    public void setOptionList(List<VoteOptionCustom> optionList) {
         this.optionList = optionList;
     }
 
@@ -42,8 +42,8 @@ public class VoteInfoExtension extends VoteInfo {
     public Set<String> getVotedUser() {
         votedUser.clear();
         if(optionList != null) {
-            for(VoteOptionExtension optionExtension: optionList) {
-                List<UserVote> userVoteList = optionExtension.getUserVoteList();
+            for(VoteOptionCustom optionCustom: optionList) {
+                List<UserVote> userVoteList = optionCustom.getUserVoteList();
                 if(userVoteList != null) {
                     for(UserVote uservote: userVoteList) {
                         if(uservote.getUvid() != null) {
@@ -64,7 +64,7 @@ public class VoteInfoExtension extends VoteInfo {
     public Integer getTotal() {
         total = 0;
         if(optionList != null) {
-            for(VoteOptionExtension optionExtension: optionList) {
+            for(VoteOptionCustom optionExtension: optionList) {
                 total += optionExtension.getCount();
             }
         }

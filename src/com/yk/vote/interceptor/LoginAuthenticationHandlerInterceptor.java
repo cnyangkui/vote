@@ -1,5 +1,7 @@
 package com.yk.vote.interceptor;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.lang.Nullable;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,11 +14,13 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class LoginAuthenticationHandlerInterceptor implements HandlerInterceptor {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoginAuthenticationHandlerInterceptor.class);
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        System.out.println("**************登录认证拦截***************");
+        LOGGER.info("**************登录认证拦截***************");
         String url = request.getRequestURI();
-        System.out.println(url);
+        LOGGER.info(url);
         if(url.indexOf("userLogin") > 0) {
             return true;
         }

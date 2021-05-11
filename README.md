@@ -218,6 +218,7 @@ public class GeneratorFromXML {
 
     <!--mapper扫描器-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--扫描包路径，如果需要扫描多个包，中间使用半角逗号隔开-->
         <property name="basePackage" value="com.yk.vote.mapper"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
