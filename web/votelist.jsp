@@ -21,7 +21,7 @@ pageEncoding="UTF-8"%>
 		<span class="addnew"><a href="add.jsp">添加新投票</a></span>
 	</div>
 	<div class="search">
-		<form method="post" action="Subject!search.action">
+		<form method="post" action="">
 			<input type="text" name="keywords" class="input-text" value=""/><input type="submit" name="submit" class="input-button" value="" />
 		</form>
 	</div>
@@ -36,7 +36,20 @@ pageEncoding="UTF-8"%>
 					<h4>
 						<a href="/vote/queryVoteResult?vid=${item.vid}">${item.getVoteName()}</a>
 					</h4>
-					<div class="join"><a href="/vote/queryVote?vid=${item.vid}">我要参与</a></div>
+					<c:set var="isVoted" value="false" />
+					<c:forEach items="${item.getVotedUser()}" var="votedUserItem" >   
+						<c:if test="${votedUserItem eq sessionScope.currentUser.getUserName()}">
+							<c:set var="isVoted" value="true" />
+						</c:if> 
+					</c:forEach>
+					<div class="join">
+						<c:if test="${isVoted == true}">
+							<a href ="javascript:return false;" onclick="return false;" style="cursor: default;"><i class="edit" style="color: grey;">我要参与</i></a>
+						</c:if>
+						<c:if test="${isVoted == false}">
+							<a href="queryVote?vid=${item.getVid()}">我要参与</a>
+						</c:if>
+					</div>
 					<p class="info">共有 ${item.getOptionNumber()} 个选项，已有 ${item.getVotedUserNumber()} 个网友参与了投票。</p>
 				</li>
 			</c:forEach>

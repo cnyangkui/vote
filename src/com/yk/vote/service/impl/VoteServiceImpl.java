@@ -24,7 +24,7 @@ public class VoteServiceImpl implements VoteService {
     private VoteOptionMapper voteOptionMapper;
 
     @Autowired
-    private VoteMapperCustom voteMapperExtension;
+    private VoteMapperCustom voteMapperCustom;
 
     @Autowired
     private UserVoteMapper userVoteMapper;
@@ -39,12 +39,12 @@ public class VoteServiceImpl implements VoteService {
 
     @Override
     public List<VoteInfoCustom> queryAllVotes() throws Exception {
-        return voteMapperExtension.queryAllVotes();
+        return voteMapperCustom.queryAllVotes();
     }
 
     @Override
     public VoteInfoCustom queryVoteByVid(String vid) throws Exception {
-        return voteMapperExtension.queryVoteByVid(vid);
+        return voteMapperCustom.queryVoteByVid(vid);
     }
 
     @Override
@@ -56,11 +56,11 @@ public class VoteServiceImpl implements VoteService {
 
     @Override
     public List<String> queryVoteByUserName(String userName) throws Exception {
-        return voteMapperExtension.queryVoteByUserName(userName);
+        return voteMapperCustom.queryVoteByUserName(userName);
     }
 
     @Override
     public List<String> queryVoteByUserNameAndVid(String userName, String vid) throws Exception {
-        return voteMapperExtension.queryVoteByUserNameAndVid(userName, vid);
+        return voteMapperCustom.queryVoteByUserNameAndVid(userName, vid);
     }
 }

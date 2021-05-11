@@ -18,7 +18,7 @@ pageEncoding="UTF-8" %>
 </div>
 <div id="navbar" class="wrap">
 	<div class="profile">
-		您好，a
+		您好，${sessionScope.currentUser.getUserName()}
 		<span class="return"><a href="/vote/queryAllVotes">投票列表</a></span>
 		<span class="addnew"><a href="add.jsp">添加新投票</a></span>
 		

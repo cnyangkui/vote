@@ -6,6 +6,8 @@ import com.yk.vote.po.VoteInfo;
 import com.yk.vote.po.VoteOption;
 import com.yk.vote.po.custom.VoteInfoCustom;
 import com.yk.vote.service.VoteService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,8 @@ import java.util.UUID;
 
 @Controller
 public class VoteController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(VoteController.class);
 
     @Autowired
     private VoteService voteService;
@@ -45,26 +49,15 @@ public class VoteController {
 
     @RequestMapping(value = "/queryVote")
     public String queryVote(Model model, HttpSession session, @RequestParam(value = "vid") String vid) throws Exception {
-        VoteInfoCustom voteInfoExtension = voteService.queryVoteByVid(vid);
-        model.addAttribute("voteInfo", voteInfoExtension);
-//        User user = (User) session.getAttribute("currentUser");
-//        if(user != null) {
-//            List<String> votedList = voteService.queryVoteByUserNameAndVid(user.getUserName(), vid);
-//            if(votedList.size() > 0) {
-//                model.addAttribute("voted", 1);
-//            } else {
-//                model.addAttribute("voted", 0);
-//            }
-//        } else {
-//            model.addAttribute("voted", 0);
-//        }
+        VoteInfoCustom voteInfoCustom = voteService.queryVoteByVid(vid);
+        model.addAttribute("voteInfo", voteInfoCustom);
         return "vote";
     }
 
     @RequestMapping(value = "/queryVoteResult")
     public String queryVoteResult(Model model, HttpSession session, @RequestParam(value = "vid") String vid) throws Exception {
-        VoteInfoCustom voteInfoExtension = voteService.queryVoteByVid(vid);
-        model.addAttribute("voteInfo", voteInfoExtension);
+        VoteInfoCustom voteInfoCustom = voteService.queryVoteByVid(vid);
+        model.addAttribute("voteInfo", voteInfoCustom);
         User user = (User) session.getAttribute("currentUser");
         if(user != null) {
             List<String> votedList = voteService.queryVoteByUserNameAndVid(user.getUserName(), vid);

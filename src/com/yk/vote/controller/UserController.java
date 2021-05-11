@@ -33,6 +33,7 @@ public class UserController {
     @RequestMapping(value = "/userLogin", method = { RequestMethod.POST } )
     public String userLogin(Model model, HttpSession session, @RequestParam(value = "userName") String userName, @RequestParam(value = "password") String password) throws Exception {
         User user = userService.queryUser(new User(userName, password));
+        session.setAttribute("currentUser", null);
         if(user == null) {
             model.addAttribute("status", "failed");
             return "login";
