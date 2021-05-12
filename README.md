@@ -367,7 +367,7 @@ public class GeneratorFromXML {
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
-            <bean class="com.yk.vote.interceptor.LoginAuthenticationHandlerInterceptor  "></bean>
+            <bean class="com.yk.vote.interceptor.LoginAuthenticationHandlerInterceptor"></bean>
         </mvc:interceptor>
     </mvc:interceptors>
 

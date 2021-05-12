@@ -23,7 +23,7 @@ pageEncoding="UTF-8"%>
 		
 	</div>
 	<div class="search">
-		<form method="post" action="Subject!search.action">
+		<form method="post" action="">
 			<input type="text" name="keywords" class="input-text" value=""/><input type="submit" name="submit" class="input-button" value="" />
 		</form>
 	</div>

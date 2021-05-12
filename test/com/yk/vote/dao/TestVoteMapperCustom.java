@@ -10,20 +10,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class TestVoteMapperExtension extends BaseTest {
+public class TestVoteMapperCustom extends BaseTest {
 
     @Autowired
-    private VoteMapperCustom voteMapperExtension;
+    private VoteMapperCustom voteMapperCustom;
 
     @Test
     public void testSelectAllVotes() {
-        List<VoteInfoCustom> list = voteMapperExtension.queryAllVotes();
-        for(VoteInfoCustom voteExtension: list) {
-            System.out.println(voteExtension.getVoteName());
-            List<VoteOptionCustom> optionList = voteExtension.getOptionList();
-            for(VoteOptionCustom voteOption: optionList) {
-                System.out.println(voteOption.getOptionName());
-                List<UserVote> userVoteList = voteOption.getUserVoteList();
+        List<VoteInfoCustom> list = voteMapperCustom.queryAllVotes();
+        for(VoteInfoCustom voteInfoCustom: list) {
+            System.out.println(voteInfoCustom.getVoteName());
+            List<VoteOptionCustom> optionList = voteInfoCustom.getOptionList();
+            for(VoteOptionCustom voteOptionCustom: optionList) {
+                System.out.println(voteOptionCustom.getOptionName());
+                List<UserVote> userVoteList = voteOptionCustom.getUserVoteList();
                 System.out.println(userVoteList.size());
                 for(UserVote uservote: userVoteList) {
                     System.out.println(uservote);
@@ -35,7 +35,7 @@ public class TestVoteMapperExtension extends BaseTest {
 
     @Test
     public void testQueryVoteByUserName() {
-        List<String> list = voteMapperExtension.queryVoteByUserName("admin");
+        List<String> list = voteMapperCustom.queryVoteByUserName("admin");
         for(String string: list) {
             System.out.println(string);
         }
@@ -43,7 +43,7 @@ public class TestVoteMapperExtension extends BaseTest {
 
     @Test
     public void testQueryVoteByUserNameAndVid() {
-        List<String> list = voteMapperExtension.queryVoteByUserNameAndVid("admin", "cc187806-00c9-4eca-98b8-93c7eee2e713");
+        List<String> list = voteMapperCustom.queryVoteByUserNameAndVid("admin", "cc187806-00c9-4eca-98b8-93c7eee2e713");
         for(String string: list) {
             System.out.println(string);
         }
