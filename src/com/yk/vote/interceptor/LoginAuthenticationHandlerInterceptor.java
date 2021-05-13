@@ -21,22 +21,22 @@ public class LoginAuthenticationHandlerInterceptor implements HandlerInterceptor
         LOGGER.info("**************登录认证拦截***************");
         String url = request.getRequestURI();
         LOGGER.info(url);
-        if(url.indexOf("userLogin") > 0) {
+        if(url.indexOf("userLogin") >= 0) {
             return true;
         }
-        if(url.indexOf("userRegister") > 0) {
+        if(url.indexOf("userRegister") >= 0) {
             return true;
         }
         if(request.getSession().getAttribute("currentUser") != null) {
             return true;
         }
-        if(url.indexOf("/images/") > 0) {
+        if(url.indexOf("/images/") >= 0) {
             return true;
         }
-        if(url.indexOf("/js/") > 0) {
+        if(url.indexOf("/js/") >= 0) {
             return true;
         }
-        if(url.indexOf("/css/") > 0) {
+        if(url.indexOf("/css/") >= 0) {
             return true;
         }
         response.sendRedirect("login.jsp");
